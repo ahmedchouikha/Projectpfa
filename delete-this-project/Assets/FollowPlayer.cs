@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
+    public Transform Player;
+    public Vector3 decalage;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,6 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = Player.position + decalage;
     }
 }

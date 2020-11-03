@@ -7,8 +7,12 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
     public int velocity1;
     public int velocity2;
-    public int jump;
-
+    public float RayDistance = 1f;
+   
+    bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, RayDistance);
+    }
 
     void FixedUpdate()
     {
@@ -22,13 +26,10 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(-velocity2 * Time.deltaTime, 0, 0,ForceMode.VelocityChange );
         }
-        
-    }
-    void OnColissionEnter(Collision Collidername)
-    {
-        if (Collidername.collider.tag == "Terrain" && Input.GetKey("space"))
+        if (Input.GetKey("space") && IsGrounded( ))
         {
-            rb.AddForce(0, jump * Time.deltaTime, 0);
+            rb.AddForce(0, 46, 0);
         }
     }
+    
 }

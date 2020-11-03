@@ -5,14 +5,15 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     public PlayerMovement script;
-    void OnCollisionEnter (Collision colliderinfo)
+    void OnCollisionEnter(Collision colliderinfo)
     {
         if (colliderinfo.collider.tag == "Obstacle")
         {
+
             Debug.Log("we hit an  obsticle");
             script.enabled = false;
 
         }
-        
+
     }
 }

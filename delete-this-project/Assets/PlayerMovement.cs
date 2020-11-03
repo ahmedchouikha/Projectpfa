@@ -19,11 +19,12 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(0, 0, velocity1 * Time.deltaTime);
         if (Input.GetKey("d"))
         {
-            rb.AddForce(velocity2 * Time.deltaTime, 0,0 );
+            rb.AddForce(velocity2 * Time.deltaTime, 0,0 ,ForceMode.VelocityChange);
         }
         if (Input.GetKey("q"))
+
         {
-            rb.AddForce(-velocity2 * Time.deltaTime, 0, 0);
+            rb.AddForce(-velocity2 * Time.deltaTime, 0, 0,ForceMode.VelocityChange );
         }
     }
 }

@@ -8,13 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public int velocity1;
     public int velocity2;
     public int jump;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         rb.AddForce(0, 0, velocity1 * Time.deltaTime);
@@ -27,9 +22,13 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(-velocity2 * Time.deltaTime, 0, 0,ForceMode.VelocityChange );
         }
-        if (Input.GetKey("space"))
+        
+    }
+    void OnColissionEnter(Collision Collidername)
+    {
+        if (Collidername.collider.tag == "Terrain" && Input.GetKey("space"))
         {
-            rb.AddForce(0, jump, 0);
+            rb.AddForce(0, jump * Time.deltaTime, 0);
         }
     }
 }
